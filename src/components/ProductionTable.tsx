@@ -58,23 +58,38 @@ const MaxMinProductionTable: React.FC<MaxMinProductionTableProps> = ({ data }) =
     return result;
   }, [data]);
 
+  const tableStyle: React.CSSProperties = {
+    border: '1px solid black',
+    textAlign: 'center',
+  };
+
+  const thStyle: React.CSSProperties = {
+    border: '1px solid black',
+    textAlign: 'center',
+    width: '33%',
+  };
+
   return (
     <div>
-      <Title order={3} mb="md">Crops with Max & Min Production per Year</Title>
-      <Table striped highlightOnHover>
+      <Title order={3} mb="md" style={{ textAlign: 'center' }}>Crops with Max & Min Production per Year</Title>
+      <Table
+        striped
+        highlightOnHover
+        style={{ borderCollapse: 'collapse', width: '100%' }}
+      >
         <thead>
           <tr>
-            <th>Year</th>
-            <th>Crop with Maximum Production</th>
-            <th>Crop with Minimum Production</th>
+            <th style={thStyle}>Year</th>
+            <th style={thStyle}>Crop with Maximum Production</th>
+            <th style={thStyle}>Crop with Minimum Production</th>
           </tr>
         </thead>
         <tbody>
           {aggregatedData.map((row, index) => (
             <tr key={index}>
-              <td>{row.year}</td>
-              <td>{row.maxProductionCrop}</td>
-              <td>{row.minProductionCrop}</td>
+              <td style={tableStyle}>{row.year}</td>
+              <td style={tableStyle}>{row.maxProductionCrop}</td>
+              <td style={tableStyle}>{row.minProductionCrop}</td>
             </tr>
           ))}
         </tbody>

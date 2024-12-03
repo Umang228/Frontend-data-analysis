@@ -57,23 +57,34 @@ const CropStatisticsTable: React.FC<CropStatisticsTableProps> = ({ data }) => {
     return result;
   }, [data]);
 
+  const tableStyle: React.CSSProperties = {
+    border: '1px solid black',
+    textAlign: 'center',
+  };
+
+  const thStyle: React.CSSProperties = {
+    border: '1px solid black',
+    textAlign: 'center',
+    width: '33%',
+  };
+
   return (
     <div>
-      <Title order={3}>Crop Statistics (1950-2020)</Title>
+      <Title order={3} style={{ textAlign: 'center' }}>Crop Statistics (1950-2020)</Title>
       <Table striped highlightOnHover>
         <thead>
           <tr>
-            <th>Crop</th>
-            <th>Average Yield (Kg/Ha)</th>
-            <th>Average Cultivation Area (Ha)</th>
+            <th style={thStyle}>Crop</th>
+            <th style={thStyle}>Average Yield (Kg/Ha)</th>
+            <th style={thStyle}>Average Cultivation Area (Ha)</th>
           </tr>
         </thead>
         <tbody>
           {cropStats.map((row, index) => (
             <tr key={index}>
-              <td>{row.crop}</td>
-              <td>{row.averageYield}</td>
-              <td>{row.averageCultivationArea}</td>
+              <td style={tableStyle}>{row.crop}</td>
+              <td style={tableStyle}>{row.averageYield}</td>
+              <td style={tableStyle}>{row.averageCultivationArea}</td>
             </tr>
           ))}
         </tbody>
